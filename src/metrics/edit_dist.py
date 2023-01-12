@@ -245,13 +245,11 @@ def get_x_plus(w, s):
     i = 0
     while i < len(w):
         if w[i] in s:
-            print(f"from {i}")
             cluster = w[i]
             i += 1
             while i < len(w) and w[i] in s:
                 cluster += w[i]
                 i += 1
-            print(f"till {i-1}")
             clusters.append(cluster)
             i -= 1
         i += 1
@@ -263,18 +261,26 @@ c_clusters = set(c_clusters)
 
 for w in pws:
     c = get_x_plus(w, consonants)
-    if any([(x not in c_clusters) for x in c]): print(0)
-    else: print(1)
+    wrong = [x for x in c if x not in c_clusters]
+    #if sum([(x not in c_clusters) for x in c]): print(0)
+    #else: print(1)
+    if wrong == []: print(0)
+    else: print(str(len(wrong)) + '\t' + str(wrong))
 
+print('\n\n')
 v_clusters = []
 for w in lex: v_clusters += get_x_plus(w, vowels)
 v_clusters = set(v_clusters)
 
 for w in pws:
     c = get_x_plus(w, vowels)
-    if any([(x not in v_clusters) for x in c]): print(0)
-    else: print(1)
+    wrong = [x for x in c if x not in v_clusters]
+    #if any([(x not in v_clusters) for x in c]): print(0)
+    #else: print(1)
+    if wrong == []: print(0)
+    else: print(str(len(wrong)) + '\t' + str(wrong))
 
+print('\n\n')
 def get_cvc_plus(w):
     clusters = []
     i = 0
@@ -298,8 +304,54 @@ cvc_clusters = set(cvc_clusters)
 
 for w in pws:
     c = get_cvc_plus(w)
-    if any([(x not in cvc_clusters) for x in c]): print(0)
-    else: print(1)
+    wrong = [x for x in c if x not in cvc_clusters]
+    #if any([(x not in cvc_clusters) for x in c]): print(0)
+    #else: print(1)
+    if wrong == []: print(0)
+    else: print(str(len(wrong)) + '\t' + str(wrong))
+
+def get_cpvpcp(w):
+  clusters = []
+  i = 0
+  while i < len(w):
+    if w[i] in consonants:
+      j = i + 1
+      cluster = [w[i]]
+      while j < len(w) and w[j] in consonants:
+        cluster.append(w[j])
+        j += 1
+      if j < len(w) and w[j] in vowels:
+        while j < len(w) and w[j] in vowels:
+          cluster.append(w[j])
+          j += 1
+        if j < len(w) and w[j] in consonants:
+          c = j
+          while j < len(w) and w[j] in consonants:
+            cluster.append(w[j])
+            j += 1
+          clusters.append(''.join(cluster))
+          i = c
+        else:
+          i += 1
+          continue
+      else:
+        i += 1
+        continue
+    else:
+      i += 1
+  return clusters
+
+cpvpcp_clusters = []
+for w in lex: cpvpcp_clusters += get_cpvpcp(w)
+cpvpcp_clusters = set(cpvpcp_clusters)
+
+for w in pws:
+    c = get_cpvpcp(w)
+    wrong = [x for x in c if x not in cpvpcp_clusters]
+    #if any([(x not in cvc_clusters) for x in c]): print(0)
+    #else: print(1)
+    if wrong == []: print(0)
+    else: print(str(len(wrong)) + '\t' + str(wrong))
 
 matras = ['ा', 'ि', 'ी', 'ु', 'ू', 'ृ', 'े', 'ै', 'ो', 'ौ', 'ं', 'ः', 'ँ', 'ॅ', 'ॉ', 'ॆ', 'ॊ']
 
