@@ -1,0 +1,4 @@
+numpy
+tqdm 
+wikipron
+torch
