@@ -4,14 +4,17 @@
 
  **.**
 ├── **data**
-│   ├── *nonpseudo.csv*  : Contains the list of words and non-words
-│   └── *pseudo.csv*  : Contains the list and counts of all pseudo-words
-├── **images** : Contains the images for all words, non-words, pseudo-words and warmup words
-├── **neuropsydia** : Contains the modified *neuropsydia* module
+│   ├── *nonpseudo.csv*  : List of words and non-words
+│   └── *pseudo.csv*  : List and counts of all pseudo-words
+├── **images** : Images for all stimuli
+│   ├── **nonpseudo**
+│   ├── **pseudo**
+│   └── **warmup**
+├── **neuropsydia** : Modified *neuropsydia* python module
 ├── **results** : Stores the results of all runs of the experiment
-├── *run.py* : 
-├── *requirements.txt* :
-└──
+├── *run.py* : Main experiment for the given stimuli
+├── *requirements.txt* : List of requisite python modules
+└── *stimuli2img.ipynb* : Generates image for given stimulus
 
 --reset to reset counts
 
@@ -20,6 +23,8 @@ We have adapted the *neuropsydia* module from *https://github.com/neuropsycholog
 https://neuropsydia.readthedocs.io/en/latest/ can be referred to.
 
 Modified ask.py, core.py and scale.py files.
+
+36 stimuli in total for each run of the experiment
 
 Words (12)
 - 6 high freq
