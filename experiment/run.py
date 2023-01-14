@@ -68,8 +68,7 @@ press_enter = n.ask(text = "Press ENTER",
 
 for i in os.listdir("./images/warmup/"):
     n.newpage()
-#     n.time.wait(1000)
-    n.time.wait(100)
+    n.time.wait(1000)
     n.image("./images/warmup/" + i, size=3, y=7)
     answer1 = -1
     rt1 = -1
@@ -80,7 +79,7 @@ for i in os.listdir("./images/warmup/"):
                            edges = [1, 7],
                            labels = ["1", "2", "3", "4", "5", "6", "7"],
                            validation = False,
-                           time_max=60,
+                           time_max=6000,
                            get_RT=True
                            )
     if rt1>6000:
@@ -88,8 +87,7 @@ for i in os.listdir("./images/warmup/"):
     n.newpage()
     n.image("./images/warmup/" + i, size=3, y=7)
     n.refresh()
-#     n.time.wait(500)
-    n.time.wait(50)
+    n.time.wait(500)
     n.newpage()
     n.image("./images/warmup/" + i, size=3, y=7)
     answer2 = -1
@@ -101,7 +99,7 @@ for i in os.listdir("./images/warmup/"):
                            edges = [1, 7],
                            labels = ["1", "2", "3", "4", "5", "6", "7"],
                            validation = False,
-                           time_max=50,
+                           time_max=5000,
                            get_RT=True
                            )
     if rt2>5000:
@@ -187,8 +185,7 @@ press_enter = n.ask(text = "Press ENTER",
 
 for i in range(len(loc)):
     n.newpage()
-#     n.time.wait(1000)
-    n.time.wait(100)
+    n.time.wait(1000)
     n.image(loc[i], size=3, y=7)
     answer1 = -1
     rt1 = -1
@@ -199,7 +196,7 @@ for i in range(len(loc)):
                            edges = [1, 7],
                            labels = ["1", "2", "3", "4", "5", "6", "7"],
                            validation = False,
-                           time_max=60,
+                           time_max=6000,
                            get_RT=True
                            )
     if rt1>6000:
@@ -207,8 +204,7 @@ for i in range(len(loc)):
     n.newpage()
     n.image(loc[i], size=3, y=7)
     n.refresh()
-#     n.time.wait(500)
-    n.time.wait(50)
+    n.time.wait(500)
     n.newpage()
     n.image(loc[i], size=3, y=7)
     answer2 = -1
@@ -220,7 +216,7 @@ for i in range(len(loc)):
                            edges = [1, 7],
                            labels = ["1", "2", "3", "4", "5", "6", "7"],
                            validation = False,
-                           time_max=50,
+                           time_max=5000,
                            get_RT=True
                            )
     if rt2>5000:
