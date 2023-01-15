@@ -217,7 +217,7 @@ def clean_word(w):
     return w
 
 print("Getting vocab")
-f = open('ipa_lexicon.txt', 'r')
+f = open('../ipa_lexicon.txt', 'r')
 lex = []
 from tqdm import tqdm
 for line in tqdm(f):
@@ -365,7 +365,7 @@ for w in pws:
     f.write(w + '\t' + str(l) + '\t' + str(m) + '\t' + str(a) + '\n')
 f.close()
 
-f = open('pseudo.txt', 'r')
+f = open('../ipa_pseudowords.txt', 'r')
 ipa = []
 for line in f:
     ipa.append(line[:-1])
