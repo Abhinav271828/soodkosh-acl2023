@@ -17,7 +17,7 @@ def levenshteinDistance(s1, s2):
         distances = distances_
     return distances[-1]
 
-pws = \
+#pws = \
 ["ना:",
 "कुुय",
 "कव",
@@ -110,7 +110,7 @@ pws = \
 "कोरुपाशवादी"
 ]
 
-#pws = \
+pws = \
 ["nɑɑ",
 "kʊj",
 "kəʋ",
@@ -240,6 +240,13 @@ characters = {'m', 'i', 'z', 'ɽ', 'ŋ', 'T', 'b', 'j', 'l', 'e', 'ɑ', 'ʃ', 'D
 consonants = {'m', 'z', 'ɽ', 'ŋ', 'T', 'b', 'j', 'l', 'ʃ', 'D', 'ɦ', 'ʈ', 'n', 'ɾ', 'ʰ', 'ɖ', 'x', 'k', 'ɣ', 'p', 'ɡ', 'ɔ', 'ʱ', 'ʒ', 'f', 'C', 'J', 's', 'ɳ', 'ʋ', 'q', 'ʂ', 'ɲ'}
 vowels = {'ɑ', 'e', '̃', 'u', 'ɪ', '̯', 'a', 'o', 'ʊ', 'æ', 'i', 'ə', 'ɛ'}
 
+f = open('ipa_lexicon.txt', 'r')
+lex = []
+from tqdm import tqdm
+for line in tqdm(f):
+    lex.append(clean_word(line[:-1]))
+f.close()
+
 def get_x_plus(w, s):
     clusters = []
     i = 0
@@ -365,7 +372,7 @@ for w in pws:
     f.write(w + '\t' + str(l) + '\t' + str(m) + '\t' + str(a) + '\n')
 f.close()
 
-f = open('pseudo.txt', 'r')
+f = open('ipa_pseudowords.txt', 'r')
 ipa = []
 for line in f:
     ipa.append(line[:-1])
