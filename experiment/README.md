@@ -26,6 +26,8 @@ pip install -r requirements.txt
 
 We have adapted the *neuropsydia* module from [https://github.com/neuropsychology/Neuropsydia.py]() and modified the *ask.py*, *core.py* and *scale.py* files to better accommodate the experiment's requirements.
 
+https://neuropsydia.readthedocs.io/en/latest/ can be referred to.
+
 ## Data
 
 **nonpseudo.csv**
@@ -41,67 +43,32 @@ We have adapted the *neuropsydia* module from [https://github.com/neuropsycholog
 
 **pseudo.csv**
 
-| Label |            Type            |
-| :---: | :------------------------: |
+| Label |        Type        |
+| :---: | :----------------: |
 |   7   | Short pseudo-words |
 |   8   | Long pseudo-words |
 
-Words (12)
-
-- 6 high freq
-  - 3 short
-  - 3 long
-- 6 low freq
-  - 3 short
-  - 3 long
-
-Non Words (12)
-
-- 6 long
-- 6 short
-
-Pseudo Words (>12)
-
-- half short
-- half long
-
-36 stimuli in total for each run of the experiment
--> All 12 words (Randomized order in each run)
--> All 12 non words (Randomized order in each run)
--> 12 of the total Pseudo Words (Randomized order and possibly unique in each run)
+This file also lists the counts of all pseudo words.
 
 ## Run the experiment
 
-Use the *--reset* parameter to reset the counts of all pseudowords used in past runs and start afresh.
+Use the *--reset* parameter if the counts of all pseudowords used in past runs need to be reset for starting afresh.
 
 ```powershell
-python experiment.py --reset
+python run.py --reset
 ```
 
-https://neuropsydia.readthedocs.io/en/latest/ can be referred to.
+### Experiment Details
+The experiment requires participants to rate stimuli (words, non-words, pseudowords) according to familiarity and wordlikeness. The scale of rating familiarity and wordlikeness for a given stimulus is from 1 to 7. The motivation and reasoning behind all the following details of the experiment are provided in the paper. The experiment starts upon pressing Enter, following which the stimuli appear after 1000ms, immediately after which the familiarity scale appears. Participants are given 6000ms to rate the familiarity of stimuli. The familiarity scale disappears either after the participant has finished rating or after the time is up (whichever is the minimum of the two). This is to ensure that the participants do not change their responses for the familiarity scale. There is a gap of 500ms between the familiarity and wordlikeness scales. Participants are given 5000ms to rate the wordlikeness of stimuli. For both familiarity and wordlikeness, in case the participants fail to rate the stimuli within the stipulated amount of time, the rating is recorded as -1.
 
-Elements can be placed at any height on the screen with respect to the central horizontal line (-10<=y<=10).
-Familiarity -> 3.3
-Wordiness -> -2.3
+The first part of the experiment is a warm-up test consisting of 5 randomised word stimuli (some of which are code-mixed, and some are low frequency). The Enter button required to start the warm-up test appears after 2000 ms. Upon the completion of the warm-up test, 10000ms are given to the participants before the appearance of the Enter button for starting the main experiment. This time is provided to the participants to relax before the main experiment and is also used to instruct them with regard to their responses in the warmup test. The main experiment consists of 36 stimuli in total, 12 words, 12 non-words, and 12 pseudowords. The stimuli in the main experiment are pseudo-randomised such that their occurrence is balanced across word types and lengths. 
 
-Scale of 1 to 7 for familiarity and wordiness
+### Element specific details
 
-Warmup Test 
-2000 ms before start (can start late by pressing Enter late)
-1000 ms between stimuli
-6000 ms for familiarity (immediately after image is displayed) (-1 if time exceeded)
-500 ms between familiarity and wordiness scale (Familiarity scale disappears)
-5000 ms for wordiness (-1 if time exceeded)
+The following parameters can be changed by going to the respective codes.
 
-Main Experiment
-10000 ms before start (can start late by pressing Enter late)
-1000 ms between stimuli
-6000 ms for familiarity (immediately after image is displayed) (-1 if time exceeded)
-500 ms between familiarity and wordiness scale (Familiarity scale disappears)
-5000 ms for wordiness (-1 if time exceeded)
+In the experiment, the positioning of the elements on the screen with respect to the central horizontal line (-10<=y<=10) is as follows: the familiarity scale is placed above the central horizontal line (y=3.3), the wordiness scale is placed below the central horizontal line (y=-2.3), and the stimuli are placed above the familiarity scale (y=7). 
 
-Stimuli2img
+## Creation of Stimuli
 
-Generates an image for a given input.
-
-The generated image is of size 300 x 80 pixels, and the text is centered within the given space. The text is generated in *yellow* (#ffff00) on a *blue* (#496d89) background for good contrast and visibility. We chose *Gargi* font for the Devanagiri script for easy readability.
+Stimuli2img.ipynb (run on Google Colab) is used to generate the image form of the given Unicode string (word, pseudoword, or nonword) i.e the stimuli. The generated image is of size 300 x 80 pixels, and the text is centred within the given space. The text is generated in yellow (#ffff00) on a blue (#496d89) background for good contrast and visibility. The font **Gargi** was chosen for the Devanagiri script for easy readability.
