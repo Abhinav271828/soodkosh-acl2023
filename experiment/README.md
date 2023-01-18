@@ -66,6 +66,9 @@ Pseudo Words (>12)
 - half long
 
 36 stimuli in total for each run of the experiment
+-> All 12 words (Randomized order in each run)
+-> All 12 non words (Randomized order in each run)
+-> 12 of the total Pseudo Words (Randomized order and possibly unique in each run)
 
 ## Run the experiment
 
@@ -76,5 +79,29 @@ python experiment.py --reset
 ```
 
 https://neuropsydia.readthedocs.io/en/latest/ can be referred to.
+
+Elements can be placed at any height on the screen with respect to the central horizontal line (-10<=y<=10).
+Familiarity -> 3.3
+Wordiness -> -2.3
+
+Scale of 1 to 7 for familiarity and wordiness
+
+Warmup Test 
+2000 ms before start (can start late by pressing Enter late)
+1000 ms between stimuli
+6000 ms for familiarity (immediately after image is displayed) (-1 if time exceeded)
+500 ms between familiarity and wordiness scale (Familiarity scale disappears)
+5000 ms for wordiness (-1 if time exceeded)
+
+Main Experiment
+10000 ms before start (can start late by pressing Enter late)
+1000 ms between stimuli
+6000 ms for familiarity (immediately after image is displayed) (-1 if time exceeded)
+500 ms between familiarity and wordiness scale (Familiarity scale disappears)
+5000 ms for wordiness (-1 if time exceeded)
+
+Stimuli2img
+
+Generates an image for a given input.
 
 The generated image is of size 300 x 80 pixels, and the text is centered within the given space. The text is generated in *yellow* (#ffff00) on a *blue* (#496d89) background for good contrast and visibility. We chose *Gargi* font for the Devanagiri script for easy readability.

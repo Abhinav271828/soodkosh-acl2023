@@ -5,6 +5,7 @@ import os
 import random
 import sys
 
+#Reset counts of annotations for pseudo.csv
 if len(sys.argv)==2 and sys.argv[1]=="--reset":
     ps = pd.read_csv("./data/pseudo.csv", index_col=False)
     for i in range(ps.count()[0]):
@@ -23,9 +24,9 @@ main_familiarity = []
 main_wordiness_time = []
 main_familiarity_time = []
 
-#Roll Number
+#ID
 n.newpage()
-roll_number = n.ask(text = "Enter your roll number:",
+_id = n.ask(text = "Enter your ID:",
                     style = "body",
                     x = -3,
                     y = 1.5,
@@ -37,7 +38,7 @@ roll_number = n.ask(text = "Enter your roll number:",
                     question_y = 3,
                     question_size = 2
                     )
-print(roll_number)
+print(_id)
 
 # Warmup Test
 n.newpage()
@@ -111,6 +112,7 @@ for i in os.listdir("./images/warmup/"):
 
 warmup = ["जनप्रतिनिधियों", "स्मित", "ओवरब्रिजों", "गढ़खेड़ा", "फीजियोथेरेपिस्ट"]
 
+# Seeds for pseudo-randomization to balance across participants and stimuli types 
 A = "265847367851"
 B = "367851265847"
 seeds = [A+A+A, B+B+B, B+A+A, B+B+A]
@@ -156,7 +158,7 @@ for i in seeds[0]:
         words.append(pseudo._get_value(indices[curr-1][-1], 'String'))
         indices[curr-1].pop()
 
-# Main Test
+# Main Experiment
 n.newpage()
 n.write(text="MAIN",
         x = 0,
@@ -226,9 +228,7 @@ for i in range(len(loc)):
     main_wordiness.append(round(answer2))
     main_wordiness_time.append(rt2)
 
-# print(warmup_familiarity, warmup_familiarity_time, warmup_wordiness, warmup_wordiness_time)
-# print(main_familiarity, main_familiarity_time, main_wordiness, main_wordiness_time)
-
+# Saving results for participant
 words = warmup + words
 familiarity = warmup_familiarity + main_familiarity
 familiarity_time = warmup_familiarity_time + main_familiarity_time
@@ -236,8 +236,9 @@ wordiness = warmup_wordiness + main_wordiness
 wordiness_time = warmup_wordiness_time + main_wordiness_time
 
 out = pd.DataFrame(list(zip(words, familiarity, familiarity_time, wordiness, wordiness_time)), columns = ["word", "familiarity", "familiarity_time", "wordiness", "wordiness_time"])
-out.to_csv("./results/"+roll_number + ".csv", index=False)
+out.to_csv("./results/"+_id + ".csv", index=False)
 
+# Updating annotation counts
 for i in final_indices[6:]:
     for j in i:
         pseudo.at[j, 'Count'] = pseudo.iloc[j]['Count'] + 1
