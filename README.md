@@ -9,10 +9,10 @@ This repository hosts the generation pipeline (with model), evaluation experimen
 
 # Soodkosh
 
-soodkosh.csv contains a dataset of 90 pseduowords in Hindi. Each pseudoword has the following features listed out:
+soodkosh.csv contains a dataset of 90 pseudowords in Hindi. Each pseudoword has the following features listed out:
 
-* `WRmean`: Wordlikeness Gradient Acceptability Mean over 44 native Hindi participants ratings
-* `FRmean`: Familiarity (of the Pseudoword) Mean over 44 native Hindi participants ratings
+* `WRmean`: Wordlikeness Gradient Acceptability Mean over 44 native Hindi participants ratings (1-7)
+* `FRmean`: Familiarity (of the pseudoword) Mean over 44 native Hindi participants ratings (1-7)
 * `WTmean`: Time taken to rate Wordlikeness Gradient Acceptability (in ms)
 * `FTmean`: Time taken to rate Familiarity (in ms)
 * `comp`: Is the pseudoword a compound of two real words? (1 for yes, 0 for no)
