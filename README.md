@@ -33,9 +33,9 @@ soodkosh.csv contains a dataset of 90 pseudowords in Hindi. Each pseudoword has 
 * `Syllables`: Count of Syllables in the pseudoword
 * `Phonemes`: Count of Phonemes in the pseudoword
 
-Please refer to Jemma König's [work]{https://academic.oup.com/applij/article-abstract/41/6/878/5580557} for a detailed definition of `comp`, `poly`, `npoly`, `1-C`, and `C+`, `V+`, `CV+C`
+Please refer to Jemma König's [work](https://academic.oup.com/applij/article-abstract/41/6/878/5580557) for a detailed definition of `comp`, `poly`, `npoly`, `1-C`, and `C+`, `V+`, `CV+C`
 
-Please refer to Ark Verma's [work]{https://link.springer.com/article/10.3758/s13428-021-01625-2} for a detailed definition of `Orth_len`, `Matras`, `Aksharas`, `Syllables`, and `Phonemes`.
+Please refer to Ark Verma's [work](https://link.springer.com/article/10.3758/s13428-021-01625-2) for a detailed definition of `Orth_len`, `Matras`, `Aksharas`, `Syllables`, and `Phonemes`.
 
 ## Descriptive Metrics for Soodkosh
 To generate metrics for the pseudowords, run the following command from the root directory:
