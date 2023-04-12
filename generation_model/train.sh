@@ -6,7 +6,7 @@ echo "Training LM."
 python3 main.py --data "../data" \
     --model LSTM \
     --emsize 34 \
-    --nhid 200 \
+    --nhid 2 \
     --lr 20 \
     --epochs 4 \
     --bptt 10 \
